@@ -1,14 +1,18 @@
 package com.sanmidev.mybugmaster1.ui
 
 import android.os.Bundle
+import android.widget.Adapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sanmidev.mybugmaster1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private  var _activityMainBinding : ActivityMainBinding? = null
+    private var adapter : InsectAdapter? = null
 
     val activityMainBinding : ActivityMainBinding
         get() = _activityMainBinding!!
@@ -24,8 +28,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
 
+        val adapter = InsectAdapter(this)
+        activityMainBinding.insectListRecyclerview.adapter = adapter
+        activityMainBinding.insectListRecyclerview.layoutManager = LinearLayoutManager(this)
         mainViewModel.allInsects.observe(this, Observer {
-            activityMainBinding.txtName.text = it.toString()
+            adapter.setInsectList(it)
         })
 
 
@@ -36,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         _activityMainBinding = null
+        adapter = null
         super.onDestroy()
     }
 }

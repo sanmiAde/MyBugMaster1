@@ -13,15 +13,15 @@ import kotlinx.coroutines.launch
 @Database(entities = [Insect::class], exportSchema = false, version = 1)
 abstract class MyBugMasterDatabase : RoomDatabase() {
 
-   abstract val insectDao : InsectDao
+    abstract val insectDao: InsectDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the
         // same time.
         @Volatile
-        private var INSTANCE:  MyBugMasterDatabase? = null
+        private var INSTANCE: MyBugMasterDatabase? = null
 
-        fun getDatabase(context: Context, scope : CoroutineScope): MyBugMasterDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): MyBugMasterDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -39,7 +39,8 @@ abstract class MyBugMasterDatabase : RoomDatabase() {
         }
     }
 
-    class SeedDatabseCallback(val context: Context,val scope: CoroutineScope) : RoomDatabase.Callback() {
+    class SeedDatabseCallback(val context: Context, val scope: CoroutineScope) :
+        RoomDatabase.Callback() {
 
         override fun onOpen(db: SupportSQLiteDatabase) {
             super.onOpen(db)
@@ -48,7 +49,7 @@ abstract class MyBugMasterDatabase : RoomDatabase() {
 
                 scope.launch {
 
-                    val insectDao =databse.insectDao
+                    val insectDao = databse.insectDao
 
                     insectDao.deleteAll()
 

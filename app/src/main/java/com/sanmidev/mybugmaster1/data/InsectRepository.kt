@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 
 class InsectRepository(private val insectDao: InsectDao) {
 
-
-
     fun getInsectList() : LiveData<List<Insect>>{
         return  insectDao.getAllInsects()
     }
