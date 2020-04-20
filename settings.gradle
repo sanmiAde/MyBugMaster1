@@ -1,0 +1,2 @@
+rootProject.name='My Bug Master 1'
+include ':app'
