@@ -1,4 +1,4 @@
-package com.sanmidev.mybugmaster1.ui
+package com.sanmidev.mybugmaster1.ui.insectList
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -34,6 +34,7 @@ class InsectAdapter(val context : Context) : RecyclerView.Adapter<InsectAdapter.
     fun setInsectList(data : List<Insect>){
         insectList.clear()
         insectList.addAll(data.toMutableList())
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: InsectViewHolder, position: Int) {

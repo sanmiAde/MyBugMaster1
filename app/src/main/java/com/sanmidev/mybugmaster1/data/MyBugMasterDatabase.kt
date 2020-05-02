@@ -42,23 +42,16 @@ abstract class MyBugMasterDatabase : RoomDatabase() {
     class SeedDatabseCallback(val context: Context, val scope: CoroutineScope) :
         RoomDatabase.Callback() {
 
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
 
             INSTANCE?.let { databse ->
 
                 scope.launch {
-
                     val insectDao = databse.insectDao
-
-                    insectDao.deleteAll()
-
                     val insectJson = JsonUtils.readFileFromRawDirectory(context, R.raw.insects)
-
                     insectDao.insertInsects(JsonUtils.convertJsonToInsects(insectJson))
                 }
-
-
             }
         }
     }
