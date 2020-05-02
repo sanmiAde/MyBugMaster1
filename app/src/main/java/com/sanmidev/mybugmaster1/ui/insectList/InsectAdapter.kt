@@ -14,7 +14,6 @@ class InsectAdapter(
 
     private val insectList = mutableListOf<Insect>()
 
-
     inner class InsectViewHolder(val binding: InsectListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(insect: Insect, insectOnClick: (insect: Insect) -> Unit) {
@@ -24,16 +23,14 @@ class InsectAdapter(
                 insectOnClick.invoke(insect)
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InsectViewHolder {
         val layoutInflater = LayoutInflater.from(context)
 
-        val binding = InsectListItemBinding.inflate(layoutInflater)
+        val binding = InsectListItemBinding.inflate(layoutInflater, parent, false)
 
         return InsectViewHolder(binding)
-
     }
 
     override fun getItemCount(): Int = insectList.size

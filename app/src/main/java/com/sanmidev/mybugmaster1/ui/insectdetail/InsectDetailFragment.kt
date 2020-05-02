@@ -13,13 +13,12 @@ import androidx.navigation.fragment.navArgs
 import com.sanmidev.mybugmaster1.R
 import com.sanmidev.mybugmaster1.databinding.InsectDetailFragmentBinding
 import com.sanmidev.mybugmaster1.databinding.InsectDetailFragmentBindingImpl
+import com.sanmidev.mybugmaster1.ui.initToolbarButton
+
 
 class InsectDetailFragment : Fragment() {
-
-
-
-    private var _insectDetailFragmentBinding : InsectDetailFragmentBinding? = null
-    private val insectDetailFragmentBinding : InsectDetailFragmentBinding get() = _insectDetailFragmentBinding!!
+    private var _insectDetailFragmentBinding: InsectDetailFragmentBinding? = null
+    private val insectDetailFragmentBinding: InsectDetailFragmentBinding get() = _insectDetailFragmentBinding!!
     private lateinit var viewModel: InsectDetailViewModel
 
     private val args by navArgs<InsectDetailFragmentArgs>()
@@ -28,7 +27,15 @@ class InsectDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _insectDetailFragmentBinding = InsectDetailFragmentBindingImpl.inflate(inflater)
+        initToolbarButton(
+            "Insect Detail",
+            insectDetailFragmentBinding.detailInsectToolbar,
+            setBackButton = true,
+            activity =
+            requireActivity()
+        )
         insectDetailFragmentBinding.insect = args.insect
         return insectDetailFragmentBinding.root
     }

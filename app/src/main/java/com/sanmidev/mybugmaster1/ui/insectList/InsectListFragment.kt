@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.sanmidev.mybugmaster1.data.Insect
 import com.sanmidev.mybugmaster1.databinding.InsectListFragmentBinding
+import com.sanmidev.mybugmaster1.ui.initToolbarButton
+
 
 class InsectListFragment : Fragment() {
 
@@ -41,6 +43,7 @@ class InsectListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbarButton("Bug Master", insectListFragmentBinding.materialToolbar , setBackButton = false, activity = requireActivity())
 
         initRecyclerview()
     }

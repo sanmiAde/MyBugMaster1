@@ -27,6 +27,8 @@ object JsonUtils {
         val listOFInsects = mutableListOf<Insect>()
 
 
+
+
         for (index in 1 until insectArray.length()) {
             val insectJSONObject: JSONObject = insectArray.getJSONObject(index)
 
