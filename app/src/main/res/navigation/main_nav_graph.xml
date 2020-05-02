@@ -9,5 +9,19 @@
         android:id="@+id/insectListFragment"
         android:name="com.sanmidev.mybugmaster1.ui.insectList.InsectListFragment"
         android:label="insect_list_fragment"
-        tools:layout="@layout/insect_list_fragment" />
+        tools:layout="@layout/insect_list_fragment" >
+        <action
+            android:id="@+id/action_insectListFragment_to_insectDetailFragment"
+            app:destination="@id/insectDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insectDetailFragment"
+        android:name="com.sanmidev.mybugmaster1.ui.insectdetail.InsectDetailFragment"
+        android:label="InsectDetailFragment" >
+        <argument
+            android:name="insect"
+            app:argType="com.sanmidev.mybugmaster1.data.Insect"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

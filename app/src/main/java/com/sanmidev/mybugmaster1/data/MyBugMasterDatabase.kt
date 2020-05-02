@@ -46,7 +46,6 @@ abstract class MyBugMasterDatabase : RoomDatabase() {
             super.onCreate(db)
 
             INSTANCE?.let { databse ->
-
                 scope.launch {
                     val insectDao = databse.insectDao
                     val insectJson = JsonUtils.readFileFromRawDirectory(context, R.raw.insects)

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Bug Master 1</string>
+    <string name="insect_classification_txt">Classification : %1$s </string>
 </resources>
